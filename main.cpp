@@ -1,52 +1,33 @@
 #include <iostream>
 #include <Windows.h>
-#include <cstdlib>
 
+int foo(int a, int b)
+{
+	if (b == 0)
+	{
+		return 0;
+	}
+	if (b < 0)
+	{
+		return -(a + foo(a, -(b) - 1));
+	}
+	return a + foo(a, b - 1);
+}
 
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	srand(time(NULL));
-	const int strok = 4;
-	const int stolb = 4;
-	int mass[strok][stolb]{}, number= 0;
-	std::cout << "задание 1\n";
-	std::cout << "¬ведите число: ";
-	std::cin >> number;
+	
+	int number1, number2;
 
-	for (int i = 0; i < strok; i++)
-	{
-		std::cout<<  std::endl;
-		for (int j = 0; j < stolb; j++)
-		{
-			
-			mass[i][j] = number;
-			std::cout << mass[i][j] << "\t";
-			number *= 2;
-		}
-	}
-	std::cout << std::endl;
-
-	const int strok1 = 12;
-	const int stolb1 = 12;
-	int mass1[strok1][stolb1]{}, number1 = 0;
-	std::cout << "задание 2\n";
-	std::cout << "¬ведите число: ";
+	std::cout << "введите первое число: ";
 	std::cin >> number1;
+	std::cout << "введите второе число: ";
+	std::cin >> number2;
 
-	for (int i = 0; i < strok1; i++)
-	{
-		std::cout << std::endl;
-		for (int j = 0; j < stolb1; j++)
-		{
+	std::cout << foo(number1, number2);
 
-			mass1[i][j] = number1;
-			std::cout << mass1[i][j] << "\t";
-			number1 += 1;
-		}
-	}
-	std::cout << std::endl;
 
 	return 0;
 }
